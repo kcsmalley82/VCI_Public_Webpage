@@ -533,3 +533,8 @@ details.more summary { cursor: pointer; font-weight: 700; font-size: .88rem; col
   .header-actions .btn { padding: 8px 10px; font-size: .75rem; }
   .topbar-inner { gap: 14px; }
 }
+
+/* Branch video (home page) */
+.video-section { background: var(--white); }
+.branch-video { margin: 0 auto; max-width: 960px; }
+.branch-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: var(--r); box-shadow: var(--shadow); background: var(--dark); }
