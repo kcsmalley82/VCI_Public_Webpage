@@ -20,7 +20,8 @@ Simplified to a single page (2026-11-10, per marketing review). Everything lives
 |---|---|
 | Hero + quick payment estimate | `#top` |
 | Branch video | `#video` |
-| Loan options (VA, FHA, Conventional; buy, refinance, cash-out) | `#loans` |
+| Loan options (VA, FHA, Conventional; buy, refinance, cash-out) + Apply/Contact buttons | `#loans` |
+| Calculators: one section, dropdown picks among 7 (payment, affordability, loan amount, refinance, rent vs. buy, term, budget). Rates start blank. | `#calculators` |
 | Why work with us (team photo) | `#why` |
 | How it works (4 steps) | `#process` |
 | Loan officers + processing staff (from `SITE.team`) | `#team` |
@@ -28,7 +29,7 @@ Simplified to a single page (2026-11-10, per marketing review). Everything lives
 | Documents checklist | `#documents` |
 | Contact | `#contact` |
 
-The earlier multi-page draft (loans, full calculators, team and apply pages) is in git history
+The earlier multi-page draft (loans, team and apply pages) is in git history
 (commit `c97fb20`) if any of it should come back.
 
 `assets/site.js` builds the header (anchor nav) and footer and holds **every branch fact in one

@@ -110,6 +110,7 @@
   // ---------- Header: one-page anchor nav ----------
   var NAV = [
     ['#loans', 'Loan Options'],
+    ['#calculators', 'Calculators'],
     ['#process', 'How It Works'],
     ['#team', 'Meet the Team'],
     ['#faq', 'FAQ'],
