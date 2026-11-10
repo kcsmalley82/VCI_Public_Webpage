@@ -544,3 +544,5 @@ html { scroll-behavior: smooth; }
 main section[id] { scroll-margin-top: 84px; }
 .h2-sm { font-size: clamp(1.4rem, 2.4vw, 1.8rem); margin-bottom: 10px; }
 .refi-row { margin-top: 24px; }
+.qc-note { font-size: .74rem; line-height: 1.45; color: var(--text-muted); margin: 12px 0 0; }
+.fine-print { font-size: .82rem; color: var(--text-muted); margin: 18px 0 0; max-width: 900px; }

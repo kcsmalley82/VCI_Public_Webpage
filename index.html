@@ -58,8 +58,8 @@
             <div class="input-wrap has-post"><input type="number" id="qc-down" value="10" min="0" max="100" step="0.5" inputmode="decimal"><span class="adorn post">%</span></div>
           </div>
           <div class="field">
-            <label for="qc-rate">Example rate</label>
-            <div class="input-wrap has-post"><input type="number" id="qc-rate" value="6.5" min="0" max="20" step="0.125" inputmode="decimal"><span class="adorn post">%</span></div>
+            <label for="qc-rate">Interest rate</label>
+            <div class="input-wrap has-post"><input type="number" id="qc-rate" value="" placeholder="Enter a rate" min="0" max="20" step="0.125" inputmode="decimal"><span class="adorn post">%</span></div>
           </div>
         </div>
         <div class="qc-result" aria-live="polite">
@@ -67,9 +67,10 @@
           <div class="value" id="qc-total">—</div>
         </div>
         <div class="qc-foot">
-          <span>Example rate only, not a quote.</span>
+          <span>Ask a loan officer for today's rates.</span>
           <a class="text-link" href="#contact">Get real numbers</a>
         </div>
+        <p class="qc-note">For illustration only, using the rate you enter. Assumes a 30-year fixed loan (360 monthly payments), property taxes of 0.6% of the price per year and homeowners insurance of $1,500 per year. Mortgage insurance, FHA MIP or the VA funding fee are estimated where they apply. Does not include HOA dues. Your actual rate, APR and payment depend on your credit, loan amount, property and other factors. This is not a loan offer or a commitment to lend.</p>
       </form>
     </div>
   </section>
@@ -105,7 +106,7 @@
           <h3>VA Loans</h3>
           <ul class="check-list">
             <li>Down payment may not be required for eligible borrowers</li>
-            <li>No monthly mortgage insurance</li>
+            <li>No monthly mortgage insurance (a VA funding fee applies unless you are exempt)</li>
             <li>VA Streamline (IRRRL) and VA cash-out refinance</li>
           </ul>
         </article>
@@ -119,20 +120,21 @@
           </ul>
         </article>
         <article class="card program-card dark">
-          <span class="tag">Most popular</span>
+          <span class="tag">Buy or refinance</span>
           <h3>Conventional Loans</h3>
           <ul class="check-list">
             <li>Fixed-rate and adjustable-rate options</li>
-            <li>Mortgage insurance can be removed as equity grows</li>
+            <li>Mortgage insurance may be removed once you reach enough equity, subject to loan guidelines</li>
             <li>Primary homes, second homes and investment property</li>
           </ul>
         </article>
       </div>
       <div class="grid grid-3 refi-row">
         <div class="card"><div class="icon" data-icon="home"></div><h3>Buying a home</h3><p>Get pre-approved, know your budget, and shop with confidence.</p></div>
-        <div class="card"><div class="icon" data-icon="refresh"></div><h3>Refinancing</h3><p>Lower your payment, shorten your term, drop mortgage insurance, or use VA IRRRL and FHA Streamline options.</p></div>
+        <div class="card"><div class="icon" data-icon="refresh"></div><h3>Refinancing</h3><p>Your goal may be a lower payment, a shorter term or removing mortgage insurance. We also offer VA IRRRL and FHA Streamline refinances.</p></div>
         <div class="card"><div class="icon" data-icon="wallet"></div><h3>Cash-out refinance</h3><p>Use the equity you have built for home improvements, debt consolidation or other goals.</p></div>
       </div>
+      <p class="fine-print">Refinancing may increase the total finance charges you pay over the life of the loan. Mortgage insurance removal and refinance eligibility depend on program guidelines, your equity and your credit. All loans are subject to credit approval.</p>
     </div>
   </section>
 
@@ -268,9 +270,9 @@
     var downPct = +$('qc-down').value || 0;
     var rate = +$('qc-rate').value || 0;
     var r = MTG.payment({ type: type, price: price, down: price * downPct / 100, rate: rate, years: 30, taxYr: price * 0.006, insYr: 1500, hoaMo: 0, vaUse: 'first' });
-    $('qc-total').innerHTML = price ? MTG.money(r.total) + '<small>/mo</small>' : '—';
+    $('qc-total').innerHTML = price && rate ? MTG.money(r.total) + '<small>/mo</small>' : '—';
     var mi = type === 'fha' ? ', FHA MIP' : type === 'conv' && r.mi ? ', est. PMI' : type === 'va' ? ', VA funding fee financed' : '';
-    $('qc-sub').textContent = '30-year fixed, incl. est. taxes & insurance' + mi;
+    $('qc-sub').textContent = rate ? '30-year fixed, incl. est. taxes & insurance' + mi : 'Enter an interest rate to see an estimate';
   }
   document.querySelectorAll('#quick-calc .seg button').forEach(function (b) {
     b.addEventListener('click', function () {
