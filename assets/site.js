@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Public branch site — shared header, footer, mega menu, and branch config.
+   Public branch site (one page) — shared header, footer and branch config.
    Every branch-specific fact lives in SITE below. Anything still in
    [square brackets] is a placeholder and is outlined while SITE.draft is true.
    ========================================================================== */
@@ -101,129 +101,35 @@
 
   // ---------- Apply link ----------
   function applyAttrs() {
-    if (!SITE.applyUrl) return 'href="apply.html"';
+    if (!SITE.applyUrl) return 'href="#contact"';
     return 'href="' + esc(SITE.applyUrl) + '"' + (SITE.applyNewTab ? ' target="_blank" rel="noopener"' : '');
   }
   window.SITE_APPLY_ATTRS = applyAttrs;
-  function phoneHref() { return SITE.phoneHref || (isPh(SITE.phone) ? 'apply.html#contact' : 'tel:' + SITE.phone.replace(/[^\d+]/g, '')); }
+  function phoneHref() { return SITE.phoneHref || (isPh(SITE.phone) ? '#contact' : 'tel:' + SITE.phone.replace(/[^\d+]/g, '')); }
 
-  // ---------- Header with mega menu ----------
-  var MENUS = [
-    {
-      id: 'buy', label: 'Buy a Home',
-      cols: [
-        { h: 'Purchase loans', items: [
-          ['loans.html#va', 'VA Home Loans', 'For veterans, service members and eligible surviving spouses'],
-          ['loans.html#fha', 'FHA Home Loans', 'Flexible credit guidelines and a low down payment'],
-          ['loans.html#conventional', 'Conventional Loans', 'Fixed and adjustable options for many buyers']
-        ] },
-        { h: 'Plan your purchase', items: [
-          ['calculators.html#affordability', 'How Much Can I Afford?', 'Turn income and debts into a price range'],
-          ['calculators.html#payment', 'Mortgage Payment Calculator', 'Taxes, insurance and mortgage insurance included'],
-          ['calculators.html#rent-vs-buy', 'Rent vs. Buy', 'Compare the cost of renting with owning']
-        ] },
-        { h: 'Get started', items: [
-          ['apply.html', 'Get Pre-Approved', 'Know your budget before you shop'],
-          ['loans.html#first-time', 'First-Time Buyers', 'How the process works, step by step'],
-          ['team.html', 'Find a Loan Officer', 'Work with someone who knows your file']
-        ] }
-      ],
-      promo: { cls: '', h: 'Know your number before you shop.', p: 'A pre-approval shows sellers you are ready, and shows you what fits your budget.', cta: 'Get Pre-Approved', href: 'apply.html' }
-    },
-    {
-      id: 'refi', label: 'Refinance',
-      cols: [
-        { h: 'Refinance programs', items: [
-          ['loans.html#va-irrrl', 'VA IRRRL (VA Streamline)', 'Lower the rate on an existing VA loan'],
-          ['loans.html#fha-streamline', 'FHA Streamline', 'Reduced paperwork for current FHA loans'],
-          ['loans.html#cash-out', 'Cash-Out Refinance', 'Turn home equity into cash for your goals']
-        ] },
-        { h: 'Your goals', items: [
-          ['loans.html#refinance', 'Lower My Payment', 'See if a new rate or term saves money'],
-          ['loans.html#cash-out', 'Consolidate Debt', 'Roll higher-interest balances into one payment'],
-          ['loans.html#refinance', 'Shorten My Term', 'Pay your home off sooner']
-        ] },
-        { h: 'Run the numbers', items: [
-          ['calculators.html#refinance', 'Refinance Calculator', 'Monthly savings and break-even point'],
-          ['calculators.html#term', 'Loan Term Comparison', '15 vs. 30 years, side by side'],
-          ['team.html', 'Talk to a Loan Officer', 'Get a no-obligation review']
-        ] }
-      ],
-      promo: { cls: 'red', h: 'Could a refinance lower your payment?', p: 'Enter your current loan and a new rate to see your savings and break-even point.', cta: 'Try the Refinance Calculator', href: 'calculators.html#refinance' }
-    },
-    {
-      id: 'tools', label: 'Calculators',
-      cols: [
-        { h: 'Buying', items: [
-          ['calculators.html#payment', 'Mortgage Payment', 'Principal, interest, taxes, insurance and MI'],
-          ['calculators.html#affordability', 'Affordability', 'What price range fits your income'],
-          ['calculators.html#loan-amount', 'Loan Amount Estimator', 'Start from the payment you want'],
-          ['calculators.html#rent-vs-buy', 'Rent vs. Buy', 'Long-run cost of renting vs. owning']
-        ] },
-        { h: 'Planning & refinancing', items: [
-          ['calculators.html#budget', 'Budget Calculator', 'See what your budget leaves for housing'],
-          ['calculators.html#refinance', 'Refinance Savings', 'Payment change and break-even'],
-          ['calculators.html#term', 'Loan Term Comparison', 'Payment and interest by term']
-        ] },
-        { h: 'By program', items: [
-          ['calculators.html#payment?type=va', 'VA Payment', 'Includes the VA funding fee'],
-          ['calculators.html#payment?type=fha', 'FHA Payment', 'Includes upfront and annual MIP'],
-          ['calculators.html#payment?type=conv', 'Conventional Payment', 'Includes estimated PMI']
-        ] }
-      ],
-      promo: { cls: 'blue', h: 'Every calculator, one place.', p: 'Estimates update as you type. When the numbers look right, a loan officer can make them real.', cta: 'Open Calculators', href: 'calculators.html' }
-    },
-    {
-      id: 'about', label: 'About Us',
-      cols: [
-        { h: 'Our branch', items: [
-          ['team.html', 'Meet the Team', 'Our loan officers and branch staff'],
-          ['index.html#why', 'Why Work With Us', 'How we take care of you'],
-          ['index.html#process', 'How It Works', 'From application to closing']
-        ] },
-        { h: 'Help', items: [
-          ['index.html#faq', 'Frequently Asked Questions', 'Quick answers to common questions'],
-          ['apply.html#contact', 'Contact Us', 'Call, email or visit'],
-          ['apply.html#documents', 'What You Will Need', 'Documents to have ready']
-        ] },
-        { h: 'Village Capital', items: [
-          [SITE.corporateUrl, 'Village Capital & Investment', 'Our company site'],
-          [SITE.licensesUrl, 'Licensing', 'State licenses and disclosures'],
-          [SITE.nmlsConsumerAccess, 'NMLS Consumer Access', 'Verify our license (NMLS #' + SITE.companyNmls + ')']
-        ] }
-      ],
-      promo: { cls: '', h: 'Real people, start to finish.', p: 'Your loan officer stays with you from the first call to the closing table.', cta: 'Meet the Team', href: 'team.html' }
-    }
+  // ---------- Header: one-page anchor nav ----------
+  var NAV = [
+    ['#loans', 'Loan Options'],
+    ['#process', 'How It Works'],
+    ['#team', 'Meet the Team'],
+    ['#faq', 'FAQ'],
+    ['#contact', 'Contact']
   ];
 
-  function megaHtml(m) {
-    var cols = m.cols.map(function (c) {
-      return '<div class="mega-col"><h3>' + esc(c.h) + '</h3><ul>' + c.items.map(function (it) {
-        var ext = /^https?:/.test(it[0]);
-        return '<li><a href="' + esc(it[0]) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + '><strong>' + esc(it[1]) + '</strong><span>' + esc(it[2]) + '</span></a></li>';
-      }).join('') + '</ul></div>';
-    }).join('');
-    var pr = m.promo;
-    var promo = '<div class="mega-promo ' + pr.cls + '"><div><h3>' + esc(pr.h) + '</h3></div><p>' + esc(pr.p) + '</p><a class="btn btn-white" href="' + esc(pr.href) + '">' + esc(pr.cta) + '</a></div>';
-    return '<div class="mega" id="mega-' + m.id + '"><div class="wrap mega-inner">' + cols + promo + '</div></div>';
-  }
-
   function headerHtml() {
-    var items = MENUS.map(function (m) {
-      return '<li class="nav-item"><button class="nav-trigger" type="button" aria-expanded="false" aria-controls="mega-' + m.id + '">' + esc(m.label) + icon('chevron') + '</button>' + megaHtml(m) + '</li>';
+    var items = NAV.map(function (n) {
+      return '<li class="nav-item"><a class="nav-link" href="' + n[0] + '">' + esc(n[1]) + '</a></li>';
     }).join('');
     return '' +
       (SITE.draft ? '<div class="draft-banner"><strong>Draft preview.</strong> Pending compliance review. Not for public use yet.</div>' : '') +
       '<div class="topbar"><div class="wrap topbar-inner">' +
         '<a href="' + esc(phoneHref()) + '">' + icon('phone') + '<span>' + val('phone') + '</span></a>' +
-        '<a href="' + (isPh(SITE.email) ? 'apply.html#contact' : 'mailto:' + esc(SITE.email)) + '">' + icon('mail') + '<span>' + val('email') + '</span></a>' +
+        '<a href="' + (isPh(SITE.email) ? '#contact' : 'mailto:' + esc(SITE.email)) + '">' + icon('mail') + '<span>' + val('email') + '</span></a>' +
         '<span class="topbar-nmls">NMLS #' + esc(SITE.companyNmls) + ' · Branch NMLS #' + esc(SITE.branchNmls) + '</span>' +
       '</div></div>' +
       '<header class="site-header" id="top"><div class="wrap header-inner">' +
-        '<a class="brand" href="index.html" aria-label="Village Capital & Investment home"><img src="assets/vci-logo-horizontal.png" alt="Village Capital & Investment LLC" width="1100" height="148"></a>' +
-        '<nav class="main-nav" id="main-nav" aria-label="Main"><ul class="nav-list">' + items +
-          '<li class="nav-item"><a class="nav-link" href="team.html">Meet the Team</a></li>' +
-        '</ul></nav>' +
+        '<a class="brand" href="#top" aria-label="Village Capital & Investment home"><img src="assets/vci-logo-horizontal.png" alt="Village Capital & Investment LLC" width="1100" height="148"></a>' +
+        '<nav class="main-nav" id="main-nav" aria-label="Main"><ul class="nav-list">' + items + '</ul></nav>' +
         '<div class="header-actions">' +
           '<a class="header-phone" href="' + esc(phoneHref()) + '"><small>Call us</small><span>' + val('phone') + '</span></a>' +
           '<a class="btn btn-primary" ' + applyAttrs() + '>Apply Now</a>' +
@@ -250,22 +156,6 @@
           '<p>' + (SITE.branchName ? val('branchName') + ' · ' : '') + 'Branch NMLS #' + val('branchNmls') + '</p>' +
           '<p>Helping families buy, refinance and build equity with VA, FHA and Conventional home loans.</p>' +
         '</div>' +
-        '<div><h3>Loans</h3><ul>' +
-          '<li><a href="loans.html#va">VA Home Loans</a></li>' +
-          '<li><a href="loans.html#fha">FHA Home Loans</a></li>' +
-          '<li><a href="loans.html#conventional">Conventional Loans</a></li>' +
-          '<li><a href="loans.html#refinance">Refinance</a></li>' +
-          '<li><a href="loans.html#cash-out">Cash-Out Refinance</a></li>' +
-        '</ul></div>' +
-        '<div><h3>Tools</h3><ul>' +
-          '<li><a href="calculators.html#payment">Mortgage Payment</a></li>' +
-          '<li><a href="calculators.html#affordability">Affordability</a></li>' +
-          '<li><a href="calculators.html#refinance">Refinance Savings</a></li>' +
-          '<li><a href="calculators.html#rent-vs-buy">Rent vs. Buy</a></li>' +
-          '<li><a href="calculators.html#term">Loan Term Comparison</a></li>' +
-          '<li><a href="calculators.html#loan-amount">Loan Amount Estimator</a></li>' +
-          '<li><a href="calculators.html#budget">Budget Calculator</a></li>' +
-        '</ul></div>' +
         '<div class="footer-contact"><h3>Contact</h3>' +
           '<p><a href="' + esc(phoneHref()) + '">' + val('phone') + '</a></p>' +
           '<p>' + (isPh(SITE.email) ? val('email') : '<a href="mailto:' + esc(SITE.email) + '">' + esc(SITE.email) + '</a>') + '</p>' +
@@ -408,7 +298,7 @@
       : '<a class="btn btn-primary" ' + applyAttrs() + '>Apply</a>';
     var contact = lo.email ? '<a class="btn btn-outline" href="mailto:' + esc(lo.email) + '">Email</a>'
       : lo.phone ? '<a class="btn btn-outline" href="tel:' + esc(lo.phone.replace(/[^\d+]/g, '')) + '">Call</a>'
-      : '<a class="btn btn-outline" href="apply.html#contact">Contact</a>';
+      : '<a class="btn btn-outline" href="#contact">Contact</a>';
     return '<article class="lo-card"><div class="lo-photo">' + photo + '</div><div class="lo-body">' +
       '<h3>' + phSpan(lo.name) + '</h3><div class="lo-title">' + phSpan(lo.title) + '</div>' +
       (isStaff ? '' : '<div class="lo-nmls">NMLS ' + phSpan(lo.nmls, '[NMLS #]') + '</div>') +

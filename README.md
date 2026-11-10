@@ -13,18 +13,29 @@ Brand: follows the **VCI Brand Style Guide** (Mar 2026), not the portal's blue/o
 Red `#AD2542` (primary), Dark `#14252C`, Blue `#1B324A`, Gray `#F5F5F5`, White. Open Sans,
 Times New Roman for sub-heads/pull quotes. Logos are the guide's own files. Layout follows villagecapital.com (dark top bar, white header with horizontal logo, photo hero, red uppercase buttons).
 
-## Pages
-| File | What it is |
-|---|---|
-| `index.html` | Home: hero + quick payment estimate, paths, programs, calculators, why us, steps, team, FAQ |
-| `loans.html` | Purchase, VA, FHA, Conventional, Refinance, Cash-Out, First-Time Buyers |
-| `calculators.html` | Payment (Conv / FHA MIP / VA funding fee), Affordability, Refinance, Rent vs. Buy, Term comparison |
-| `team.html` | Loan officer roster (from `SITE.team`) |
-| `apply.html` | Apply options, document checklist, contact |
+## Layout: one page
+Simplified to a single page (2026-11-10, per marketing review). Everything lives in `index.html`:
 
-`assets/site.js` builds the header (mega menu) and footer and holds **every branch fact in one
-`SITE` object**. `assets/calc.js` holds the mortgage math (FHA MIP table, UFMIP, VA funding-fee
-tiers mirror `quote-lab.html`).
+| Section | Anchor |
+|---|---|
+| Hero + quick payment estimate | `#top` |
+| Branch video | `#video` |
+| Loan options (VA, FHA, Conventional; buy, refinance, cash-out) | `#loans` |
+| Why work with us (team photo) | `#why` |
+| How it works (4 steps) | `#process` |
+| Loan officers + processing staff (from `SITE.team`) | `#team` |
+| FAQ | `#faq` |
+| Documents checklist | `#documents` |
+| Contact | `#contact` |
+
+The earlier multi-page draft (loans, full calculators, team and apply pages) is in git history
+(commit `c97fb20`) if any of it should come back.
+
+`assets/site.js` builds the header (anchor nav) and footer and holds **every branch fact in one
+`SITE` object**. `assets/calc.js` holds the mortgage math for the quick estimator (FHA MIP table,
+UFMIP and VA funding-fee tiers mirror `quote-lab.html`).
+
+`assets/video/branch-video.mp4` is the web cut of the branch video (open house welcome removed).
 
 ## Placeholders to fill (all in `assets/site.js` → `SITE`)
 - Filled: `applyUrl` (KC's Blend link), `branchNmls` (2776190) and `licensedStates` (34 states), both from
@@ -34,7 +45,6 @@ tiers mirror `quote-lab.html`).
   disclosures (not-a-government-agency, not your current lender, refinance finance charges, AZ license, NY notice),
   all from the villagecapital.com footer.
 - `team[]` — 10 entries: name, title, NMLS #, phone, email, photo URL, optional personal apply link
-- Home page client review (`index.html`, "Why work with us") — a real, approved review only
 - Footer disclosure text mirrors the corporate site; VCI Compliance / Marketing still signs off before launch
 
 ## Before launch

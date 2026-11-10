@@ -414,7 +414,7 @@ details.more summary { cursor: pointer; font-weight: 700; font-size: .88rem; col
 
 /* ---------- Footer ---------- */
 .site-footer { background: var(--dark); color: var(--on-dark-muted); font-size: .92rem; }
-.footer-top { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 40px; padding: 64px 24px 44px; }
+.footer-top { display: grid; grid-template-columns: 1.6fr 1fr; gap: 40px; padding: 64px 24px 44px; }
 .footer-logo { width: 190px; height: auto; display: block; margin-bottom: 18px; }
 .site-footer h3 { color: var(--white); font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 14px; }
 .site-footer ul { list-style: none; margin: 0; padding: 0; }
@@ -471,7 +471,7 @@ details.more summary { cursor: pointer; font-weight: 700; font-size: .88rem; col
   .calc-tab { width: auto; white-space: nowrap; flex-shrink: 0; }
   .calc-body { grid-template-columns: 1fr; }
   .calc-results { position: static; }
-  .footer-top { grid-template-columns: 1fr 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; }
 }
 @media (max-width: 640px) {
   section { padding: 60px 0; }
@@ -538,3 +538,9 @@ details.more summary { cursor: pointer; font-weight: 700; font-size: .88rem; col
 .video-section { background: var(--white); }
 .branch-video { margin: 0 auto; max-width: 960px; }
 .branch-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: var(--r); box-shadow: var(--shadow); background: var(--dark); }
+
+/* ---------- One-page layout ---------- */
+html { scroll-behavior: smooth; }
+main section[id] { scroll-margin-top: 84px; }
+.h2-sm { font-size: clamp(1.4rem, 2.4vw, 1.8rem); margin-bottom: 10px; }
+.refi-row { margin-top: 24px; }
