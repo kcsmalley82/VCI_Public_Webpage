@@ -546,3 +546,4 @@ main section[id] { scroll-margin-top: 84px; }
 .refi-row { margin-top: 24px; }
 .qc-note { font-size: .74rem; line-height: 1.45; color: var(--text-muted); margin: 12px 0 0; }
 .fine-print { font-size: .82rem; color: var(--text-muted); margin: 18px 0 0; max-width: 900px; }
+.legal-caps { font-size: .74rem; letter-spacing: .01em; }

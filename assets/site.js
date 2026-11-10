@@ -177,9 +177,13 @@
           'Refinancing may result in higher total finance charges over the life of the loan.</p>' +
         '<p>' + esc(SITE.company) + ' NMLS ID: ' + esc(SITE.companyNmls) + '. Arizona Mortgage Banker License No. 0909593.</p>' +
         '<p>This site is not authorized by the New York State Department of Financial Services. No mortgage solicitation activity or loan applications for properties located in the State of New York can be facilitated through this site.</p>' +
+        '<p class="legal-caps">TEXAS RESIDENTS: CONSUMERS WISHING TO FILE A COMPLAINT AGAINST A MORTGAGE BANKER OR RESIDENTIAL MORTGAGE LOAN ORIGINATOR LICENSED IN TEXAS SHOULD SEND A COMPLETED COMPLAINT FORM TO THE DEPARTMENT OF SAVINGS AND MORTGAGE LENDING (SML): 2601 N. LAMAR BLVD., SUITE 201, AUSTIN, TEXAS 78705; TEL: 1-877-276-5550. INFORMATION AND FORMS ARE AVAILABLE ON SML’S WEBSITE: <a href="https://www.sml.texas.gov/" target="_blank" rel="noopener">SML.TEXAS.GOV</a></p>' +
+        '<p class="legal-caps">THE DEPARTMENT MAINTAINS A RECOVERY FUND TO MAKE PAYMENTS OF CERTAIN ACTUAL OUT OF POCKET DAMAGES SUSTAINED BY BORROWERS CAUSED BY ACTS OF LICENSED MORTGAGE BANKER RESIDENTIAL MORTGAGE LOAN ORIGINATORS. A WRITTEN APPLICATION FOR REIMBURSEMENT FROM THE RECOVERY FUND MUST BE FILED WITH AND INVESTIGATED BY THE DEPARTMENT PRIOR TO THE PAYMENT OF A CLAIM. FOR MORE INFORMATION ABOUT THE RECOVERY FUND, PLEASE CONSULT THE DEPARTMENT’S WEB SITE AT <a href="https://www.sml.texas.gov/" target="_blank" rel="noopener">WWW.SML.TEXAS.GOV</a>.</p>' +
         '<div class="legal-links"><span>&copy; ' + year + ' ' + esc(SITE.company) + '</span>' +
           (isPh(SITE.privacyUrl) ? '<span class="ph">' + esc(SITE.privacyUrl) + '</span>' : '<a href="' + esc(SITE.privacyUrl) + '" target="_blank" rel="noopener">Privacy Policy</a>') +
           '<a href="' + esc(SITE.termsUrl) + '" target="_blank" rel="noopener">Terms of Use</a>' +
+          '<a href="https://villagecapital.com/communication-terms-of-service/" target="_blank" rel="noopener">Terms of Service</a>' +
+          '<a href="https://villagecapital.com/help/" target="_blank" rel="noopener">Consumer Help &amp; Complaints</a>' +
           '<a href="' + esc(SITE.disclosuresUrl) + '" target="_blank" rel="noopener">Disclosures</a>' +
           '<a href="' + esc(SITE.licensesUrl) + '" target="_blank" rel="noopener">Licenses</a>' +
           '<a href="' + esc(SITE.corporateUrl) + '" target="_blank" rel="noopener">villagecapital.com</a></div>' +
